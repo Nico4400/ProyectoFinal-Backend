@@ -3,7 +3,7 @@ const productsBtn = document.getElementById('productsBtn');
 const createBtn = document.getElementById('createBtn');
 
 logoutBtn.addEventListener('click', async (e) => {
-    const result = await fetch('http://localhost:8080/api/sessions/logout', {
+    const result = await fetch('/api/sessions/logout', {
         method: 'post',
         headers: {
             'Content-Type': 'application/json'
@@ -15,9 +15,9 @@ logoutBtn.addEventListener('click', async (e) => {
 });
 
 productsBtn.addEventListener('click', async (e) => {
-    window.location.href = 'http://localhost:8080/products';
+    window.location.href = '/products';
 });
 
 createBtn.addEventListener('click', async (e) => {
-    window.location.href = 'http://localhost:8080/realtimeProducts';
+    window.location.href = '/realtimeProducts';
 });

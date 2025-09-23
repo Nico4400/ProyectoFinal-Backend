@@ -204,7 +204,7 @@ export const purchaseCartById = async (req, res) => {
                 <div>
                     <h1>We just received your order</h1>
                     <p>The ticket number is: <b>${ticket.rdo.code}</b></p>
-                    <a href="http://localhost:8080/ticket/${ticket.rdo._id}" target="_blank" rel="noopener noreferrer">Link Ticket</a>
+                    <a href="/ticket/${ticket.rdo._id}" target="_blank" rel="noopener noreferrer">Link Ticket</a>
                 </div>
             `
         })
