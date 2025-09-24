@@ -10,7 +10,7 @@ import { userService , cartService } from '../dao/repositories/index.repository.
 import { getVariables } from "../config/config.js";
 import processOptions from "../utils/process.js";
 
-const {  GITHUB_CLIENT_ID,  GITHUB_CLIENT_SECRET,  GITHUB_CALLBACK_URL} = getVariables(processOptions);
+const {  GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET, GITHUB_CALLBACK_URL } = getVariables(processOptions);
 
 const LocalStrategy = local.Strategy;
 
