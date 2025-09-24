@@ -6,6 +6,10 @@ import ErrorEnum from "../services/errors/error.enum.js";
 import CustomErrors from "../services/errors/CustomError.js";
 import { getCartErrorInfo, getSingleProductErrorInfo } from "../services/errors/info.js";
 import MailingService from "../services/mailing/nodemailer.js";
+import { getVariables } from "../config/config.js";
+import processOptions from "../utils/process.js";
+
+const { BASE_URL } = getVariables(processOptions);
 
 
 // Obtener todos los carritos
@@ -204,7 +208,7 @@ export const purchaseCartById = async (req, res) => {
                 <div>
                     <h1>We just received your order</h1>
                     <p>The ticket number is: <b>${ticket.rdo.code}</b></p>
-                    <a href="/ticket/${ticket.rdo._id}" target="_blank" rel="noopener noreferrer">Link Ticket</a>
+                    <a href="${BASE_URL}/ticket/${ticket.rdo._id}" target="_blank" rel="noopener noreferrer">Link Ticket</a>
                 </div>
             `
         })

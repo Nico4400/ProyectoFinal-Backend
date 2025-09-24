@@ -2,6 +2,10 @@ import { userService } from "../dao/repositories/index.repository.js";
 import { createHash } from "../utils/bcrypt.js";
 import MailingService from "../services/mailing/nodemailer.js";
 import UserDTO from "../dtos/user.dto.js";
+import { getVariables } from "../config/config.js";
+import processOptions from "../utils/process.js";
+
+const { BASE_URL } = getVariables(processOptions);
 
 export const postRegister = async (req, res) => {
     try {
@@ -74,7 +78,7 @@ export const postRestore = async (req, res) => {
                     <p>Hi ${user.rdo.first_name},</p>
                     <p>We received a request that you want to update your password. You can do this by clicking the link below.</p>
                     <p>This request expires in 1 hour.</p>
-                    <a href="/update-password" target="_blank" rel="noopener noreferrer">Restore Password</a>
+                    <a href="${BASE_URL}/update-password" target="_blank" rel="noopener noreferrer">Restore Password</a>
                     <p>If you didn't make this request, you don't need to do anything.</p>
                 </div>
             `

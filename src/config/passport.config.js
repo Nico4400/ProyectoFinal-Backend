@@ -7,6 +7,11 @@ import { Strategy as GithubStrategy } from 'passport-github2';
 
 import { userService , cartService } from '../dao/repositories/index.repository.js';
 
+import { getVariables } from "../config/config.js";
+import processOptions from "../utils/process.js";
+
+const {  GITHUB_CLIENT_ID,  GITHUB_CLIENT_SECRET,  GITHUB_CALLBACK_URL} = getVariables(processOptions);
+
 const LocalStrategy = local.Strategy;
 
 const initializePassport = () => {
@@ -67,9 +72,9 @@ const initializePassport = () => {
 
     passport.use('github', new GithubStrategy(
         {
-            clientID: 'Iv1.d65b90205bcd0620',
-            callbackURL: 'https://proyectofinal-backend-qjzc.onrender.com/api/sessions/githubcallback',
-            clientSecret: '0fecf506997bfb3eaa67af187294671b5d4af1c2'
+            clientID: GITHUB_CLIENT_ID,
+            clientSecret: GITHUB_CLIENT_SECRET,
+            callbackURL: GITHUB_CALLBACK_URL
         },
         async (accessToken, refreshToken, profile, done) => {
             try {

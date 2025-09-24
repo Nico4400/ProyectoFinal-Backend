@@ -15,6 +15,7 @@ export const getVariables = (options) => {
     // console.log(`NODE_ENV: ${process.env.NODE_ENV}`);
 
     return {
+        BASE_URL: process.env.BASE_URL,
         PORT: process.env.PORT,
         MONGO_URL: process.env.MONGO_URL,
         adminName: process.env.ADMIN_NAME,
@@ -23,6 +24,9 @@ export const getVariables = (options) => {
         googleUser: process.env.GOOGLE_USER,
         googlePass: process.env.GOOGLE_PASSWORD,
         mailingService: process.env.MAILING_SERVICE,
-        NODE_ENV: process.env.NODE_ENV
+        NODE_ENV: process.env.NODE_ENV,
+        GITHUB_CLIENT_ID: process.env.GITHUB_CLIENT_ID,
+        GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
+        GITHUB_CALLBACK_URL: process.env.GITHUB_CALLBACK_URL
     }
 }
