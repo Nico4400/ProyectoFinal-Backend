@@ -171,3 +171,14 @@ io.on('connection', socket => {
     });
 
 });
+
+import dns from 'dns'; // arriba del todo
+
+// justo antes del app.listen
+dns.lookup('smtp.gmail.com', (err, address, family) => {
+  if (err) {
+    console.error('❌ DNS lookup error:', err);
+  } else {
+    console.log('✅ Gmail SMTP address:', address);
+  }
+});
