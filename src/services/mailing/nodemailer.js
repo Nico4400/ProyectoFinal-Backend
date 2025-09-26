@@ -1,27 +1,24 @@
 import nodemailer from 'nodemailer'
-import {getVariables} from '../../config/config.js'
-import processOptions from '../../utils/process.js';
+import { getVariables } from '../../config/config.js'
+import processOptions from '../../utils/process.js'
 
-const { googleUser, googlePass} = getVariables(processOptions)
+const { googleUser, googlePass } = getVariables(processOptions)
 
-console.log('USER:', googleUser)
-console.log('PASS:', googlePass)
+export default class MailingService {
+  constructor() {
+    this.client = nodemailer.createTransport({
+      host: 'smtp-relay.brevo.com',
+      port: 587,
+      secure: false,
+      auth: {
+        user: googleUser,
+        pass: googlePass
+      }
+    })
+  }
 
-export default class MailingService{
-    constructor(){
-        this.client = nodemailer.createTransport({
-            host: 'smtp-relay.brevo.com',
-            port: 587,
-            secure: false,
-            auth: {
-                user: googleUser,
-                pass: googlePass
-            }
-        })
-    }
-    
-    sendSimpleMail = async ({from, to, subject, html, attachments = []}) => {
-        const result = await this.client.sendMail({from, to, subject, html, attachments})
-        return result
-    }
+  sendSimpleMail = async ({ from, to, subject, html, attachments = [] }) => {
+    const result = await this.client.sendMail({ from, to, subject, html, attachments })
+    return result
+  }
 }
