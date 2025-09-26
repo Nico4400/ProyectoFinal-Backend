@@ -2,13 +2,14 @@ import nodemailer from 'nodemailer'
 import {getVariables} from '../../config/config.js'
 import processOptions from '../../utils/process.js';
 
-const {mailingService, googleUser, googlePass} = getVariables(processOptions)
+const { googleUser, googlePass} = getVariables(processOptions)
 
 export default class MailingService{
     constructor(){
         this.client = nodemailer.createTransport({
-            service: mailingService,
+            host: 'smtp-relay.brevo.com',
             port: 587,
+            secure: false,
             auth: {
                 user: googleUser,
                 pass: googlePass
